@@ -1,0 +1,66 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Block03-2</title>
+ <script src="https://unpkg.com/react@18/umd/react.development.js" defer crossorigin></script>
+ <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" defer crossorigin></script>
+ <script src="https://unpkg.com/@babel/standalone@7.10.3/babel.min.js" defer crossorigin></script>
+ <style>
+   #root {
+    max-width: 106.25rem;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: lightcyan;
+   }
+   div.div {
+       border: 2px solid rgb(131, 131, 131);
+       padding: 1.25rem;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+   }
+   input {
+       height: 2.2rem;
+       width: 20rem;
+   }
+ </style>
+</head>
+
+<body>
+ <div id="root"></div>
+
+ <script type="text/babel" data-presets="react,stage-3">
+
+   const App = () => {
+     const [userData, setUserData] = React.useState("No data provided!");
+
+     const handleChange = (event) => {
+       let value = event.target.value;
+       setUserData(value === '' ? "No data provided!" : value);
+     };
+
+     return (
+        <>
+       <h2>Function Component</h2>
+       <div className='div'>
+         <input type="text" value={userData} onChange={handleChange} />
+         <h1>{userData}</h1>
+       </div>
+       </>
+     );
+   };
+
+   const root = ReactDOM.createRoot(document.getElementById("root"));
+   root.render(<App />);
+ </script>
+</body>
+</html>
